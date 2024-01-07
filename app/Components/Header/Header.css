@@ -1,0 +1,10 @@
+.header_container{
+    display: flex;
+    padding: 1.8rem;
+    background-color: rgb(0, 0, 0);
+    width: 100%;;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: space-around;
+}

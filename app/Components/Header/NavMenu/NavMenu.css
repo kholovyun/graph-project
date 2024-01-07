@@ -1,0 +1,11 @@
+.nav_menu_list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    font-size: 21px;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    align-items: center;
+}
