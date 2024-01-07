@@ -6,26 +6,28 @@ import "./MovieList.css";
 import { Movie } from "../../../Interfaces/Movies";
 
 export const MovieList = () => {
-  const [movies, setMovies] = useState<Movie[] | null>(null);
   //@ts-ignore
   const fetchMovies = useMoviesStore((state) => state.fetch);
+  //@ts-ignore
+  const movies = useMoviesStore((state) => state.movies);
 
   useEffect(() => {
-    const getMovies = async () => {
+    const fetchData = async () => {
       try {
-        const moviesData = await fetchMovies();
-        setMovies(moviesData);
+        await fetchMovies();
+        //@ts-ignore
+        console.log(useMoviesStore.getState().movies, "aaaaaaaa");
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.error("Ошибка при загрузке фильмов:", error);
       }
     };
 
-    getMovies();
-  }, []);
+    fetchData();
+  }, [fetchMovies]);
 
   return (
     <div className="movieList">
-      {movies ? (
+      {Array.isArray(movies) && movies.length > 0 ? (
         movies.map((movie: Movie) => (
           <MovieCard movie={movie} key={movie.imdb_id} />
         ))

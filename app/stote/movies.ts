@@ -7,7 +7,7 @@ interface iniState  {
 }
 export const useMoviesStore = create((set) => ({
     movies: {},
-    fetch: async () => {
+    fetch: async ():Promise<any> => {
    
 const options = {
     method: 'GET',
@@ -20,7 +20,7 @@ const options = {
   
   try {
       const response = await axios.request(options);
-      set({ movies: response.data.results })
+      set({ movies: await response.data.results })
   } catch (error) {
       console.error(error);
   }
