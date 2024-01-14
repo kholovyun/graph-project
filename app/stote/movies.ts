@@ -11,15 +11,12 @@ export const useMoviesStore = create((set) => ({
    
 const options = {
     method: 'GET',
-    url: 'https://moviesminidatabase.p.rapidapi.com/movie/order/byPopularity/',
-    headers: {
-      'X-RapidAPI-Key': '3bfcd18249msh020025f0b32c2b8p1c0a1cjsnb075099ab8c5',
-      'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
-    }
+    url: 'https://marketcv-817cc-default-rtdb.firebaseio.com/users',
   };
   
   try {
       const response = await axios.request(options);
+      console.log(response)
       set({ movies: await response.data.results })
   } catch (error) {
       console.error(error);
