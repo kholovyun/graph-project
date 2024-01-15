@@ -1,35 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { MovieCard } from "../MovieCard/MovieCard";
-import { useMoviesStore } from "../../../stote/movies";
 import "./MovieList.css";
-import { Movie } from "../../../Interfaces/Movies";
+import { useQuery, gql } from '@apollo/client';
+import { MoviesQuery } from '@/app/lib/client/query/Movies';
+import { Movie } from "@/src/__generated__/graphql";
 
 export const MovieList = () => {
-  //@ts-ignore
-  const fetchMovies = useMoviesStore((state) => state.fetch);
-  //@ts-ignore
-  const movies = useMoviesStore((state) => state.movies);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchMovies();
-        //@ts-ignore
-        console.log(useMoviesStore.getState().movies, "aaaaaaaa");
-      } catch (error) {
-        console.error("Ошибка при загрузке фильмов:", error);
-      }
-    };
-
-    fetchData();
-  }, [fetchMovies]);
+  const { loading, error, data } = useQuery(MoviesQuery.GET_MOVIES);
+  console.log(data, "UYASUDYAUSDUAISHDI")
 
   return (
     <div className="movieList">
-      {Array.isArray(movies) && movies.length > 0 ? (
-        movies.map((movie: Movie) => (
-          <MovieCard movie={movie} key={movie.imdb_id} />
+      {Array.isArray(data?.getAllMovies) && data?.getAllMovies.length > 0 ? (
+        data?.getAllMovies.map((movie: Movie) => (
+          <MovieCard movie={movie} key={movie.id} />
         ))
       ) : (
         <p>Loading...</p>

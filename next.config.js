@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['img.freepik.com', "cdn.europosters.eu"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
       },
+    ],
+  },
 }
 
 module.exports = nextConfig
