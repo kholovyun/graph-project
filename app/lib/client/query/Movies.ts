@@ -13,6 +13,19 @@ export const MoviesQuery = {
       }
     }
   }
+  `,
+  GET_MOVIE: gql`
+  query ($getMovieId: ID!) {
+    getMovie(id: $getMovieId) {
+      title
+      poster
+      id
+      genre {
+        id
+        name
+      }
+    }
+  }
   `
 }
 
