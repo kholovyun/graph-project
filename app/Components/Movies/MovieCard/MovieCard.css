@@ -1,12 +1,23 @@
 .movie_card{
+    display: flex;
     padding: 2rem;
     max-width: 30%;
     text-align: center;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: black;
-    border: 1px solid red;
+    background-color: rgba(0, 0, 0, 0.321);
     color: white;
     max-width: 250px;
     min-width: 250px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.movie_title{
+    font-weight: 600;
+    margin-bottom: 10%;
+    background-color: white;
+    width: 100%;
+    color: black;
 }

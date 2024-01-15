@@ -21,3 +21,11 @@ body {
   background-color: gray;
   padding-top: 8rem;
 }
+.container{
+  margin: 0 auto;
+  max-width: 1600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
