@@ -4,7 +4,12 @@ import { MoviesQuery } from "@/app/lib/client/query/Movies";
 import { useQuery } from "@apollo/client";
 import Image from "next/image";
 
-const MovieDetailPage = ({ params }) => {
+interface IParams {
+  params: {
+    id: string
+  }
+} 
+const MovieDetailPage = ({ params }: IParams) => {
   const id = params.id
 const {data, error} = useQuery(MoviesQuery.GET_MOVIE, {variables: { "getMovieId" :id.toString()}})
   return (

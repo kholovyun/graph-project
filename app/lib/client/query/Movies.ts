@@ -1,4 +1,4 @@
-import { useQuery, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const MoviesQuery = {
   GET_MOVIES : gql`
