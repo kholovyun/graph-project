@@ -24,7 +24,8 @@ export default function CreateMovieForm() {
             genre: formData.genre
           },
         });
-        toast("Movies Created")
+        // toast("Movies Created")
+        redirect('movies/list')
       } catch (err) {
         const error = err as Error
         console.error("Error adding movie:", error);

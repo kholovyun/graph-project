@@ -10,8 +10,8 @@ export const Header = () => {
       <Link href={"/"}>
         <Image
           className="header_logo"
-          width={50}
-          height={50}
+          width={70}
+          height={70}
           src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
           alt="logo"
         />

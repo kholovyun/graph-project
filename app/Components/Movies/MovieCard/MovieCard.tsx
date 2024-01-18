@@ -12,8 +12,8 @@ export const MovieCard = ({ movie }: Props) => {
     <Link href={`/movies/${movie.id}`} className="movie_card">
       <h6 className="movie_title">{movie.title}</h6>
       <Image
-        width={200}
-        height={150}
+        width={150}
+        height={80}
         src= {movie.poster? `${movie.poster}`:"https://cdn.europosters.eu/image/750/posters/stranger-things-summer-of-85-i76122.jpg"}
         alt="movie"
       />
