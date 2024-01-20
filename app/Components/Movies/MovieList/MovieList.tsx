@@ -1,15 +1,12 @@
 "use client";
 import { MovieCard } from "../MovieCard/MovieCard";
 import "./MovieList.css";
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { MoviesQuery } from '@/app/lib/client/query/Movies';
 import { Movie } from "@/src/__generated__/graphql";
 
 export const MovieList = () => {
-
   const { loading, error, data } = useQuery(MoviesQuery.GET_MOVIES);
-  console.log(data, "UYASUDYAUSDUAISHDI")
-
   return (
     <div className="movieList">
       {Array.isArray(data?.getAllMovies) && data?.getAllMovies.length > 0 ? (

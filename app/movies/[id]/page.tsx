@@ -1,5 +1,5 @@
 "use client";
-
+import { useParams } from 'next/navigation'
 import { MoviesQuery } from "@/app/lib/client/query/Movies";
 import { useQuery } from "@apollo/client";
 import styles from './moviePage.module.css';
@@ -7,15 +7,12 @@ import Image from "next/image";
 import { Flex, Rate } from 'antd';
 import { useState } from "react";
 
-interface IParams {
-  params: {
-    id: string
-  }
-} 
-const MovieDetailPage = ({ params }: IParams) => {
+const MovieDetailPage = () => {
   const [value, setValue] = useState(3);
-  const id = params.id
-const {data, error} = useQuery(MoviesQuery.GET_MOVIE, {variables: { "getMovieId" :id.toString()}})
+  const router = useParams();
+  
+  const { id } = router;
+const {data, error} = useQuery(MoviesQuery.GET_MOVIE, {variables: { "getMovieId" :id?.toString()}})
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
   return (
     <div className={styles.movie_page_container}>  

@@ -26,6 +26,13 @@ export const MoviesQuery = {
       }
     }
   }
+  `,
+  MOVIE_SEARCH: gql`
+  query SearchMovie($title: String!) {
+    searchMovie(title: $title) {
+      title
+    }
+  }
   `
 }
 

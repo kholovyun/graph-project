@@ -1,5 +1,6 @@
 import {create} from "zustand";
-import axios from 'axios'
+import { useQuery } from "@apollo/client";
+import { MoviesQuery } from "../lib/client/query/Movies";
 
 interface iniState  {
     movies: any[]
@@ -7,17 +8,11 @@ interface iniState  {
 }
 export const useMoviesStore = create((set) => ({
     movies: {},
-    fetch: async ():Promise<any> => {
-   
-const options = {
-    method: 'GET',
-    url: 'https://marketcv-817cc-default-rtdb.firebaseio.com/users',
-  };
-  
+    Fetch: async ():Promise<any> => {
   try {
-      const response = await axios.request(options);
+      const response = useQuery(MoviesQuery.GET_MOVIES);
       console.log(response)
-      set({ movies: await response.data.results })
+      set({ movies: response })
   } catch (error) {
       console.error(error);
   }
